@@ -16,8 +16,8 @@ def Crawl(seed: str) -> str:
         popped = link_filter['queue'].pop(0)
 
         initial_request = req.get(popped)
-        save_data(initial_request.text, "data_parse.xt")
-        absolute_grab = parse_data("data_parse.xt", BASE_URL)
+        save_data(initial_request.text, "data_parse.txt")
+        absolute_grab = parse_data("data_parse.txt", BASE_URL)
 
         for absolute in absolute_grab:
             if absolute not in link_filter['duplicates']:
@@ -45,4 +45,4 @@ def parse_data(local_file: str, BASE_URL: str) -> list:
 # with open("test_links.txt", "r") as test_run:
 #     for line in test_run:
 #         print(Crawl(line))
-print(Crawl())
+print(Crawl('http://people.scs.carleton.ca/~davidmckenney/fruits/N-0.html'))
