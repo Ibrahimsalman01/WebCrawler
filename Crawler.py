@@ -16,8 +16,8 @@ def Crawl(seed: str) -> str:
         popped = link_filter['queue'].pop(0)
 
         initial_request = req.get(popped)
-        save_data(initial_request.text, "initial_data.txt")
-        absolute_grab = parse_data("initial_data.txt", BASE_URL)
+        save_data(initial_request.text, "data_parse.xt")
+        absolute_grab = parse_data("data_parse.xt", BASE_URL)
 
         for absolute in absolute_grab:
             if absolute not in link_filter['duplicates']:
@@ -27,21 +27,22 @@ def Crawl(seed: str) -> str:
 
 
 def save_data(text: str, local_file: str):
-    with open(local_file, "w") as initial_data_w:
-        initial_data_w.write(text)
+    with open(local_file, "w") as data_w:
+        data_w.write(text)
 
 
 def parse_data(local_file: str, BASE_URL: str) -> list:
     absolutes = []
 
-    with open(local_file, "r") as initial_data_r:
-        for line in initial_data_r:
+    with open(local_file, "r") as data_r:
+        for line in data_r:
             search = reg.search('\w-\d+.html', line)
             if search:
                 absolutes.append(BASE_URL + search.group(0))
     return absolutes
 
 
-with open("test_files.txt", "r") as test_run:
-    for line in test_run:
-        print(Crawl(line))
+# with open("test_links.txt", "r") as test_run:
+#     for line in test_run:
+#         print(Crawl(line))
+print(Crawl())
