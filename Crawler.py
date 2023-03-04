@@ -42,5 +42,6 @@ def parse_data(local_file: str, BASE_URL: str) -> list:
     return absolutes
 
 
-print(Crawl('http://people.scs.carleton.ca/~davidmckenney/tinyfruits/N-0.html'))
-print(Crawl('http://people.scs.carleton.ca/~davidmckenney/fruits/N-0.html'))
+with open("test_files.txt", "r") as test_run:
+    for line in test_run:
+        print(Crawl(line))
