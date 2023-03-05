@@ -10,4 +10,4 @@ This is my webcrawler
 
 ## Crawler.py
 -Finished functionality, but can I optimize it more to run faster?
--Need consult
+-Need consult 
