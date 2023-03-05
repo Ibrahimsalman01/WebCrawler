@@ -9,5 +9,4 @@ This is my webcrawler
 3. Search.py - Incomplete
 
 ## Crawler.py
--Finished functionality, but can I optimize it more to run faster?
--Need consult 
+* Finished functionality, but can I optimize it more to run faster?
