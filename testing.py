@@ -1,6 +1,11 @@
-import regex
+dict_check = {
+    'words': dict()
+}
+titles = []
 
-BASE = 'http://people.scs.carleton.ca/~davidmckenney/fruits/N-0.html'
+# dict_check['words']['1'] = dict()
+# dict_check['words']['2'] = dict()
 
-ABSOLUTE = BASE.rsplit('/', 1)[1].rstrip('.html')
-print(ABSOLUTE)
+for i in range(5):
+    titles.append(i)
+print(titles)
