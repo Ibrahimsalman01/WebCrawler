@@ -36,14 +36,6 @@ def Crawl(seed: str) -> str:
                 page_content[page_key]['words'] = list()
                 page_content[page_key]['outgoing_links'] = list()
 
-        # make for loop that actually adds stuff to page_count
-        for outgoing_link in page_grab['outgoing_links']:
-            print(outgoing_link)
-
-            
-        
-    print(page_content)
-
     return f'The number of page(s) found: {str(len(link_filter["uniques"]))}'
 
 
@@ -67,7 +59,6 @@ def parse_data(local_file: str, BASE_URL: str) -> list:
 
             if search_absolute:
                 page_grab['filter_list'].append(BASE_URL + search_absolute.group(0))
-                page_grab['outgoing_links'].append(BASE_URL + search_absolute.group(0))
     return page_grab
 
 
