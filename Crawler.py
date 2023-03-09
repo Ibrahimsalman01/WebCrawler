@@ -8,22 +8,43 @@ import os
 def Crawl(seed: str) -> str:
     link_filter = {
         'queue':[seed],
-        'duplicates':set()
+        'uniques':set()
     }
-    BASE_URL = seed[:-8]
+    page_content = {
+
+    }
+
+    BASE_URL = seed.rsplit('N', 1)[0]
 
     while len(link_filter['queue']) > 0: 
         popped = link_filter['queue'].pop(0)
 
         initial_request = req.get(popped)
         save_data(initial_request.text, "data_parse.txt")
-        absolute_grab = parse_data("data_parse.txt", BASE_URL)
+        page_grab = parse_data("data_parse.txt", BASE_URL)
 
-        for absolute in absolute_grab:
-            if absolute not in link_filter['duplicates']:
+        for absolute in page_grab['filter_list']:
+            if absolute not in link_filter['uniques']:
                 link_filter['queue'].append(absolute)
-                link_filter['duplicates'].add(absolute)
-    return f'The number of page(s) found: {str(len(link_filter["duplicates"]))}'
+                link_filter['uniques'].add(absolute)
+
+                # page_content information
+                page_key = absolute.rsplit('/', 1)[1].rstrip('.html')
+                page_content[page_key] = dict()
+                page_content[page_key]['title'] = page_key
+
+                page_content[page_key]['words'] = list()
+                page_content[page_key]['outgoing_links'] = list()
+
+        # make for loop that actually adds stuff to page_count
+        for outgoing_link in page_grab['outgoing_links']:
+            print(outgoing_link)
+
+            
+        
+    print(page_content)
+
+    return f'The number of page(s) found: {str(len(link_filter["uniques"]))}'
 
 
 def save_data(text: str, local_file: str):
@@ -32,17 +53,22 @@ def save_data(text: str, local_file: str):
 
 
 def parse_data(local_file: str, BASE_URL: str) -> list:
-    absolutes = []
+    page_grab = {
+        'filter_list': [],
+        'words': [],
+        'outgoing_links': []
+    }
 
     with open(local_file, "r") as data_r:
         for line in data_r:
-            search = reg.search('\w-\d+.html', line)
-            if search:
-                absolutes.append(BASE_URL + search.group(0))
-    return absolutes
+            search_absolute = reg.search('\w-\d+.html', line)
+            # search_words = reg.search()
+            outgoing_links = 'link'
+
+            if search_absolute:
+                page_grab['filter_list'].append(BASE_URL + search_absolute.group(0))
+                page_grab['outgoing_links'].append(BASE_URL + search_absolute.group(0))
+    return page_grab
 
 
-# with open("test_links.txt", "r") as test_run:
-#     for line in test_run:
-#         print(Crawl(line))
-print(Crawl('http://people.scs.carleton.ca/~davidmckenney/fruits/N-0.html'))
+print(Crawl('http://people.scs.carleton.ca/~davidmckenney/tinyfruits/N-0.html'))
