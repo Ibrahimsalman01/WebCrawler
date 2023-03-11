@@ -1,0 +1,14 @@
+{
+   "title": "N-8",
+   "outgoing_links": [
+      "http://people.scs.carleton.ca/~davidmckenney/tinyfruits/N-7.html",
+      "http://people.scs.carleton.ca/~davidmckenney/tinyfruits/N-9.html",
+      "http://people.scs.carleton.ca/~davidmckenney/tinyfruits/N-0.html"
+   ],
+   "words": {
+      "banana": 1,
+      "apricot": 1,
+      "kiwi": 1,
+      "blueberry": 1
+   }
+}

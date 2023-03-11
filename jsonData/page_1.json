@@ -1,0 +1,18 @@
+{
+   "title": "N-1",
+   "outgoing_links": [
+      "http://people.scs.carleton.ca/~davidmckenney/tinyfruits/N-0.html"
+   ],
+   "words": {
+      "fig": 3,
+      "lime": 2,
+      "blueberry": 4,
+      "orange": 2,
+      "cherry": 3,
+      "kiwi": 1,
+      "apricot": 2,
+      "peach": 1,
+      "banana": 1,
+      "coconut": 1
+   }
+}

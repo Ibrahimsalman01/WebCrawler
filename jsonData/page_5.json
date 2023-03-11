@@ -1,0 +1,15 @@
+{
+   "title": "N-5",
+   "outgoing_links": [
+      "http://people.scs.carleton.ca/~davidmckenney/tinyfruits/N-0.html"
+   ],
+   "words": {
+      "apple": 2,
+      "banana": 2,
+      "papaya": 2,
+      "apricot": 2,
+      "orange": 1,
+      "coconut": 1,
+      "cherry": 1
+   }
+}
