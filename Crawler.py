@@ -11,7 +11,7 @@ def Crawl(seed: str) -> str:
         'queue':[seed],
         'uniques':set()
     }
-    crawl_page_content = list()
+    crawl_page_content = []
     
     BASE_URL = seed.rsplit('N', 1)[0]
 
@@ -58,12 +58,14 @@ def parse_data(local_file: str, BASE_URL: str) -> list:
     page_grab = {
         'filter_list': [],
         'parse_page_content': {
-            'title': str(),
-            'outgoing_links': list(),
-            'words': dict()
+            'title': '',
+            'outgoing_links': [],
+            'words': {
+        
+            }
         }
     }
-    word_str = str()
+    word_str = ''
 
     with open(local_file, "r") as data_r:
         for line in data_r:
