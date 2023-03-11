@@ -1,11 +1,9 @@
-dict_check = {
-    'words': dict()
+dict1 = {
+    'word': 1,
+    'word2': 0
 }
-titles = []
 
-# dict_check['words']['1'] = dict()
-# dict_check['words']['2'] = dict()
+if 'word3' not in dict1:
+    dict1['word3'] = 0
 
-for i in range(5):
-    titles.append(i)
-print(titles)
+print(dict1)
