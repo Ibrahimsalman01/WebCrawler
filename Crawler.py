@@ -59,10 +59,9 @@ def parse_data(local_file: str, BASE_URL: str) -> list:
         'filter_list': [],
         'parse_page_content': {
             'title': '',
+            'native_link': '',
             'outgoing_links': [],
-            'words': {
-        
-            }
+            'words': {}
         }
     }
     word_str = ''
@@ -75,6 +74,8 @@ def parse_data(local_file: str, BASE_URL: str) -> list:
             if title:
                 page_title = title.group(0).lstrip('<title>').rsplit('</title>')[0]
                 page_grab['parse_page_content']['title'] = page_title
+                page_grab['parse_page_content']['native_link'] = BASE_URL + page_title + '.html'
+                print(page_grab['parse_page_content']['native_link'])
             
             # search for all absolutes in each page
             search_absolute = reg.search('\w-\d+.html', line)
